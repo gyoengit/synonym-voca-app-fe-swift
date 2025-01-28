@@ -4,6 +4,7 @@ struct LoginPage: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
+    @Binding var selectedTab: SelectedTabOption
     
     var body: some View {
         VStack {
@@ -30,6 +31,7 @@ struct LoginPage: View {
             
             Button(action: {
                 print("회원가입 화면으로 이동")
+                selectedTab = .signup
             }) {
                 Text("Create Account")
                     .font(.system(size: 11, weight: .light))
@@ -47,7 +49,8 @@ struct LoginPage: View {
 }
 
 #Preview {
-    LoginPage()
+    @Previewable @State var selectedTab = SelectedTabOption.login;
+    LoginPage(selectedTab: $selectedTab)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
 }

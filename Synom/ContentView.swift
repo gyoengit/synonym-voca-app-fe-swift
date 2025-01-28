@@ -3,6 +3,7 @@ import SwiftUI
 enum SelectedTabOption {
     case start
     case login
+    case signup
     case home
     case user
 }
@@ -13,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         VStack (spacing: 0){
             // tab
-            if (selectedTab != SelectedTabOption.start && selectedTab != SelectedTabOption.login){
+            if (selectedTab != SelectedTabOption.start
+                && selectedTab != SelectedTabOption.login
+                && selectedTab != SelectedTabOption.signup){
                 TabBar(selectedTab: $selectedTab)
                     .frame(maxWidth: .infinity)
             }
@@ -24,7 +27,9 @@ struct ContentView: View {
                 case .start:
                     StartPage(selectedTab: $selectedTab)
                 case .login:
-                    LoginPage()
+                    LoginPage(selectedTab: $selectedTab)
+                case .signup:
+                    SignUpPage()
                 case .home:
                     // HomePage()
                     Text("home")
