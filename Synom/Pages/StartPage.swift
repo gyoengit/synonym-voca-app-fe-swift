@@ -53,8 +53,9 @@ struct StartPage: View {
 }
 
 #Preview {
+    @Previewable @State var selectedTab = SelectedTabOption.start;
     StartPage(
-        selectedTab: .constant(.start)
+        selectedTab: $selectedTab
     )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
