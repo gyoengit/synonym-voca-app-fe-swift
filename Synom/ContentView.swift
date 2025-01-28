@@ -37,8 +37,11 @@ struct ContentView: View {
             .background(.white)
         }
         .padding()
+        .background(.white)
         .frame(minWidth: 600, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+        
     }
+        
 }
 
 #Preview {

@@ -31,7 +31,7 @@
       "size" : "128x128"
     },
     {
-      "filename" : "synom_appicon.png",
+      "filename" : "synom_appicon_rounded.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"

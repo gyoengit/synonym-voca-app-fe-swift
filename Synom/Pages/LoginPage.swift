@@ -7,10 +7,12 @@ struct LoginPage: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             Text("welcome to synom")
                 .font(.system(size: 15, weight: .light))
                 .tracking(2)
-                .padding(.top, 40)
+                .padding(.top, 20)
                 .padding(.bottom, 20)
             
             VStack(alignment: .leading, spacing: 5) {
@@ -91,7 +93,7 @@ struct LoginPage: View {
             
             Spacer()
         }
-        .padding(.top, 30)
+//        .padding(.top, 30)
     }
 }
 
