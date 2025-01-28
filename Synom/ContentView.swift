@@ -1,7 +1,12 @@
 import SwiftUI
 
+enum SelectedTabOption {
+    case home
+    case user
+}
+
 struct ContentView: View {
-    @State private var selectedTab = 0
+    @State private var selectedTab = SelectedTabOption.home
     
     var body: some View {
         VStack (spacing: 0){
@@ -12,15 +17,12 @@ struct ContentView: View {
             // contents
             Group {
                 switch(selectedTab) {
-                case 0:
+                case .home:
                     // HomePage()
                     Text("home")
-                case 1:
+                case .user:
                     // UserPage()
                     Text("user")
-                default:
-                    // NotFoundPage()
-                    Text("not found")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -36,7 +38,7 @@ struct ContentView: View {
 }
 
 struct TabBar: View {
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: SelectedTabOption
     
     var body: some View {
         HStack {
@@ -46,13 +48,13 @@ struct TabBar: View {
                 .padding(8)
                 .padding(.leading, 5)
                 .onTapGesture {
-                    selectedTab = 0
+                    selectedTab = .home
                 }
             Spacer()
             Image(systemName: "person.circle")
                 .padding(.trailing, 10)
                 .onTapGesture {
-                    selectedTab = 1
+                    selectedTab = .user
                 }
         }
         .background(.white)
