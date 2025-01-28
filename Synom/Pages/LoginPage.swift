@@ -9,74 +9,23 @@ struct LoginPage: View {
         VStack {
             Spacer()
             
-            Text("welcome to synom")
-                .font(.system(size: 15, weight: .light))
-                .tracking(2)
+            Title(text: "welcome to synom", fontSize: 15)
                 .padding(.top, 20)
                 .padding(.bottom, 20)
             
-            VStack(alignment: .leading, spacing: 5) {
-               Text("name")
-                   .font(.system(size: 11, weight: .light))
-                   .foregroundColor(.black)
-               
-               TextField("", text: $username).textFieldStyle(PlainTextFieldStyle())
-                   .padding()
-                   .frame(width: 400, height: 40)
-                   .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.1)))
-                   .overlay(
-                       RoundedRectangle(cornerRadius: 10)
-                           .stroke(Color.accentColor, lineWidth: 0.3)
-                   )
-           }
-           .padding(.horizontal, 40)
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text("password")
-                    .font(.system(size: 11, weight: .light))
-                    .foregroundColor(.black)
-                
-                HStack {
-                    if isPasswordVisible {
-                        TextField("",	 text: $password)
-                    } else {
-                        SecureField("", text: $password)
-                    }
-                    
-                    Button(action: {
-                        isPasswordVisible.toggle()
-                    }) {
-                        Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
-                            .foregroundColor(.gray)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                .textFieldStyle(PlainTextFieldStyle())
-                .padding()
+            LabeledTextField(label: "name", text: $username)
                 .frame(width: 400, height: 40)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.1)))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.accentColor, lineWidth: 0.3)
-                )
-                
-                
-            }
-            .padding(.horizontal, 40)
+                .padding(.horizontal, 40)
+                .padding(.bottom, 15)
             
+            LabeledTextField(label: "password", text: $password, isSecure: true, showToggle: true)
+                .frame(width: 400, height: 40)
+                .padding(.horizontal, 40)
+                .padding(.bottom, 20)
             
-            Button(action: {
+            PrimaryButton(action: {
                 print("로그인 시도")
-            }) {
-                Text("log in")
-                    .font(.system(size: 11, weight: .light))
-                    .tracking(2)
-                    .foregroundColor(.black)
-                    .frame(width: 400, height: 30)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.3)))
-            }
-            .buttonStyle(PlainButtonStyle())
-            .padding(.top, 10)
+            }, title: "log in", width: 400, height: 30)
             
             
             Button(action: {
