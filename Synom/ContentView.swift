@@ -24,8 +24,7 @@ struct ContentView: View {
                 case .start:
                     StartPage(selectedTab: $selectedTab)
                 case .login:
-                    // LoginPage()
-                    Text("login")
+                    LoginPage()
                 case .home:
                     // HomePage()
                     Text("home")
