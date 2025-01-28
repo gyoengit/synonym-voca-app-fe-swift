@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         VStack (spacing: 0){
             // tab
-            if (selectedTab != SelectedTabOption.start){
+            if (selectedTab != SelectedTabOption.start && selectedTab != SelectedTabOption.login){
                 TabBar(selectedTab: $selectedTab)
                     .frame(maxWidth: .infinity)
             }
