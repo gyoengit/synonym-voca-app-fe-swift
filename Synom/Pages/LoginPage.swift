@@ -4,6 +4,7 @@ struct LoginPage: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
+    @State private var isShowingAlert: Bool = false
     @Binding var selectedTab: SelectedTabOption
     
     var body: some View {
@@ -26,7 +27,22 @@ struct LoginPage: View {
             
             PrimaryButton(action: {
                 print("로그인 시도")
+                AuthService.signin(username: username, password: password) { result in
+                    switch result {
+                    case .success(let response):
+                        print("Login successful!")
+//                        print("Token: \(response.accessToken)")
+                        TokenManager.saveToken(response.accessToken)
+                        selectedTab = .home
+                    case .failure(let error):
+                        print("Login failed: \(error.localizedDescription)")
+                        isShowingAlert = true
+                    }
+                }
             }, title: "log in", width: 400, height: 30)
+            .alert(isPresented: $isShowingAlert) {
+                Alert(title: Text("Login failed"), message: Text("retry with correct username & password"), dismissButton: .default(Text("ok")))
+            }
             
             
             Button(action: {
