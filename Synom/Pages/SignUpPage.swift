@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SignUpPage: View {
     @State private var username: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     
@@ -19,6 +20,11 @@ struct SignUpPage: View {
                     .padding(.horizontal, 40)
                     .padding(.bottom, 15)
                 
+                LabeledTextField(label: "email", text: $email)
+                    .frame(width: 350, height: 40)
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 15)
+                
                 LabeledTextField(label: "password", text: $password, isSecure: true, showToggle: true)
                     .frame(width: 350, height: 40)
                     .padding(.horizontal, 40)
@@ -28,7 +34,7 @@ struct SignUpPage: View {
                     print("회원가입 완료")
                 }, title: "confirm", width: 350, height: 30)
             }
-            .frame(width: 430, height: 300)
+            .frame(width: 430, height: 350)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.05)))
             
             Spacer()
