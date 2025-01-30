@@ -5,6 +5,7 @@ struct LabeledTextField: View {
     @Binding var text: String
     var isSecure: Bool = false
     var showToggle: Bool = false
+    var borderColor: Color = .gray
     @State private var isTextVisible: Bool = false
     
     var body: some View {
@@ -37,7 +38,7 @@ struct LabeledTextField: View {
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.1)))
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.accentColor, lineWidth: 0.3)
+                    .stroke(borderColor, lineWidth: 0.3)
             )
         }
     }
