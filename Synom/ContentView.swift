@@ -29,7 +29,7 @@ struct ContentView: View {
                 case .login:
                     LoginPage(selectedTab: $selectedTab)
                 case .signup:
-                    SignUpPage()
+                    SignUpPage(selectedTab: $selectedTab)
                 case .home:
                     // HomePage()
                     Text("home")
@@ -68,6 +68,9 @@ struct TabBar: View {
                 }
             Spacer()
             Image(systemName: "person.circle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20)
                 .padding(.trailing, 10)
                 .onTapGesture {
                     selectedTab = .user
@@ -75,6 +78,6 @@ struct TabBar: View {
         }
         .background(.white)
         .foregroundStyle(.tint)
-        .frame(maxHeight: 25)
+        .frame(maxHeight: 30)
     }
 }
